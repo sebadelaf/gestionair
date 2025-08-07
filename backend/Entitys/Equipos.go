@@ -2,6 +2,7 @@ package Entitys
 
 type Equipos struct {
 	ID                int    `json:"id" db:"id"`
+	ID_cliente        int    `json:"id_cliente" db:"id_cliente"`
 	Nombre            string `json:"nombre" db:"nombre"`
 	Marca             string `json:"marca" db:"marca"`
 	Modelo            string `json:"modelo" db:"modelo"`

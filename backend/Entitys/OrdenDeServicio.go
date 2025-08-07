@@ -7,5 +7,4 @@ type OrdenDeServicio struct {
 	FechaFinalizacion   string `json:"fecha_finalizacion" db:"fecha_finalizacion"`
 	Estado              string `json:"estado" db:"estado"`
 	Descripcion         string `json:"descripcion" db:"descripcion"`
-	Lista_tecnicos      []int  `json:"lista_tecnicos"`
 }
