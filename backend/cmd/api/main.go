@@ -8,7 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	// Paquetes propios
 	//"github.com/sebadelaf/gestionair/Entitys"
-	"github.com/sebadelaf/gestionair/Config"
+	"github.com/sebadelaf/gestionair/config"
 )
 
 func main() {
