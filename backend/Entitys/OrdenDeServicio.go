@@ -1,10 +1,20 @@
 package Entitys
 
+import (
+	"gorm.io/gorm"
+	"time"
+)
+
+// OrdenDeServicio es un trabajo específico sobre un equipo.
 type OrdenDeServicio struct {
-	ID                  int    `json:"id" db:"id"`
-	Id_orden_de_trabajo int    `json:"id_orden_de_trabajo" db:"id_orden_de_trabajo"`
-	FechaCreacion       string `json:"fecha_creacion" db:"fecha_creacion"`
-	FechaFinalizacion   string `json:"fecha_finalizacion" db:"fecha_finalizacion"`
-	Estado              string `json:"estado" db:"estado"`
-	Descripcion         string `json:"descripcion" db:"descripcion"`
+	gorm.Model
+	OrdenDeTrabajoID uint   `gorm:"not null"`
+	EquipoID         uint   `gorm:"not null"`
+	ProtocoloID      uint   `gorm:"not null"`
+	Estado           string `gorm:"size:50;not null;default:pendiente"`
+	FechaServicio    time.Time
+	Descripcion      string
+	HorasTrabajadas  float32
+	// Relación: Una Orden de Servicio es asignada a muchos Técnicos (Usuarios).
+	TecnicosAsignados []*Usuario `gorm:"many2many:os_tecnicos_asignados;"`
 }

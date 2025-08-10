@@ -1,7 +1,11 @@
 package Entitys
 
-type Tareas struct {
-	IdTarea      int    `json:"id_tarea" db:"id_tarea"`
-	Id_protocolo int    `json:"id_protocolo" db:"id_protocolo"`
-	Tarea        string `json:"tarea" db:"tarea"`
+import "gorm.io/gorm"
+
+// Tarea representa una única tarea dentro de un checklist de un protocolo.
+type Tarea struct {
+	gorm.Model
+	ProtocoloID uint   `gorm:"not null"` // Clave foránea para el protocolo
+	Descripcion string `gorm:"not null"`
+	Obligatorio bool
 }

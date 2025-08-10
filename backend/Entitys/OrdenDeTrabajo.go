@@ -1,10 +1,21 @@
 package Entitys
 
+import (
+	"gorm.io/gorm"
+	"time"
+)
+
+// OrdenDeTrabajo es la solicitud general de un cliente.
 type OrdenDeTrabajo struct {
-	ID                int    `json:"id" db:"id"`
-	Id_cliente        int    `json:"id_cliente" db:"id_cliente"`
-	FechaCreacion     string `json:"fecha_creacion" db:"fecha_creacion"`
-	FechaFinalizacion string `json:"fecha_finalizacion" db:"fecha_finalizacion"`
-	Estado            string `json:"estado" db:"estado"`
-	Descripcion       string `json:"descripcion" db:"descripcion"`
+	gorm.Model
+	ClienteID        uint   `gorm:"not null"`
+	UsuarioCreadorID uint   `gorm:"not null"`
+	Estado           string `gorm:"size:50;not null;default:pendiente"`
+	FechaCierre      time.Time
+	Descripcion      string
+
+	// Relación: Una Orden de Trabajo tiene muchas Órdenes de Servicio.
+	OrdenesDeServicio []OrdenDeServicio `gorm:"foreignKey:OrdenDeTrabajoID"`
+	// Relación: Una Orden de Trabajo puede involucrar muchos Equipos.
+	Equipos []*Equipo `gorm:"many2many:ot_equipos;"`
 }
