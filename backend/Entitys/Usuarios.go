@@ -11,5 +11,5 @@ type Usuario struct {
 	Rol          string `gorm:"size:50;not null"`
 	Telefono     string `gorm:"size:20"`
 	// Relación: Un Usuario (técnico) puede ser asignado a muchas Órdenes de Servicio.
-	OrdenesDeServicioAsignadas []OrdenDeServicio `gorm:"many2many:os_tecnicos_asignados;"`
+	OrdenesDeServicioAsignadas []*OrdenDeServicio `gorm:"many2many:os_tecnicos_asignados;"`
 }

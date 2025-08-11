@@ -6,8 +6,8 @@ import (
 	//"github.com/gin-contrib/cors"
 	//"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/sebadelaf/gestionair/Repositorys"
 	// Paquetes propios
-	//"github.com/sebadelaf/gestionair/Entitys"
 	"github.com/sebadelaf/gestionair/config"
 )
 
@@ -23,5 +23,13 @@ func main() {
 	// Inicializa la conexión con GORM y ejecuta AutoMigrate para crear/actualizar las tablas.
 	// La variable config.DB quedará disponible para ser usada por los repositorios.
 	config.ConnectDatabase()
+
+	// 3. Repositorios
+	clienteRepo := Repositorys.NewClienteRepository(config.DB)
+	if clienteRepo != nil {
+		log.Println("¡El repositorio de clientes fue inicializado correctamente!")
+	} else {
+		log.Println("Error al inicializar el repositorio de clientes.")
+	}
 
 }

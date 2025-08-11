@@ -1,8 +1,9 @@
 package Entitys
 
 import (
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 // OrdenDeTrabajo es la solicitud general de un cliente.
@@ -15,7 +16,7 @@ type OrdenDeTrabajo struct {
 	Descripcion      string
 
 	// Relación: Una Orden de Trabajo tiene muchas Órdenes de Servicio.
-	OrdenesDeServicio []OrdenDeServicio `gorm:"foreignKey:OrdenDeTrabajoID"`
+	OrdenesDeServicio []*OrdenDeServicio `gorm:"foreignKey:OrdenDeTrabajoID"`
 	// Relación: Una Orden de Trabajo puede involucrar muchos Equipos.
 	Equipos []*Equipo `gorm:"many2many:ot_equipos;"`
 }

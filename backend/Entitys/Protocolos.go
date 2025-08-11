@@ -8,5 +8,5 @@ type Protocolo struct {
 	Nombre string `gorm:"size:255;not null;unique"`
 
 	// Relación: Un Protocolo tiene muchas Tareas.
-	Tareas []Tarea `gorm:"foreignKey:ProtocoloID"`
+	Tareas []*Tarea `gorm:"foreignKey:ProtocoloID"`
 }

@@ -14,8 +14,8 @@ type Cliente struct {
 	Notas     string
 
 	// Relación: Un Cliente tiene muchos Equipos.
-	Equipos []Equipo `gorm:"foreignKey:ClienteID"`
+	Equipos []*Equipo `gorm:"foreignKey:ClienteID"`
 
 	// Relación: Un Cliente tiene muchas Órdenes de Trabajo.
-	OrdenesDeTrabajo []OrdenDeTrabajo `gorm:"foreignKey:ClienteID"`
+	OrdenesDeTrabajo []*OrdenDeTrabajo `gorm:"foreignKey:ClienteID"`
 }

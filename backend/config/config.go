@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/sebadelaf/gestionair/Entitys"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
 )
 
 // DB es una variable exportada que mantendrá la instancia de la conexión a la base de datos.
